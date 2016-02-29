@@ -1,7 +1,13 @@
 (ns loudmoauth-examples.core
-  (:gen-class))
+  (:require [loudmoauth.core :as lm]
+            [ring.adapter.jetty :as ringj]))
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
+(defn handler [request]
+  (condp (:uri request)
+     "/oauth2" (lm/parse-code request) 
+    {:status 200
+     :body (:uri request)
+     }))
+
+
+
