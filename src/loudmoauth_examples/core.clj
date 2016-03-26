@@ -16,12 +16,26 @@
 
 (def spotify-oauth2-params
   {:base-url "https://accounts.spotify.com"
+   :auth-endpoint "/authorize"
+   :token-endpoint "/api/token"
    :client-id (System/getenv "SPOTIFY_OAUTH2_CLIENT_ID")
    :redirect-uri "http://localhost:3000/oauth2"
    :scope "playlist-read-private user-follow-modify"
    :custom-query-params {:show-dialog "true"}
    :client-secret (System/getenv "SPOTIFY_OAUTH2_CLIENT_SECRET")
    :provider :spotify
+   })
+
+(def soundcloud-oauth2-params 
+  {:base-url "https://api.soundcloud.com"
+   :auth-endpoint "/connect"
+   :token-endpoint "/oauth2/token"
+   :client-id (System/getenv "SOUNDCLOUD_OAUTH2_CLIENT_ID")
+   :redirect-uri "http://localhost:3000/oauth2"
+   :scope "non-expiring"
+   :custom-query-params {:display "popup"}
+   :client-secret (System/getenv "SOUNDCLOUD_OAUTH2_CLIENT_SECRET")
+   :provider :soundcloud
    })
 
 (defn start-server
