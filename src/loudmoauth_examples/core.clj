@@ -6,13 +6,11 @@
             [ring.middleware.keyword-params :as ringkp]))
 
 (defn handler [request]
-  (println request)
   (condp = (:uri request)
-     "/oauth2" (lm/parse-code request)
+     "/oauth2" (lm/parse-params request)
       "/interact"  (ringr/redirect (lm/user-interaction))  
     {:status 200
-     :body (:uri request)
-     }))
+     :body (:uri request)}))
 
 (def spotify-oauth2-params
   {:base-url "https://accounts.spotify.com"
@@ -23,8 +21,7 @@
    :scope "playlist-read-private user-follow-modify"
    :custom-query-params {:show-dialog "true"}
    :client-secret (System/getenv "SPOTIFY_OAUTH2_CLIENT_SECRET")
-   :provider :spotify
-   })
+   :provider :spotify})
 
 (def soundcloud-oauth2-params 
   {:base-url "https://api.soundcloud.com"
@@ -35,8 +32,7 @@
    :scope "non-expiring"
    :custom-query-params {:display "popup"}
    :client-secret (System/getenv "SOUNDCLOUD_OAUTH2_CLIENT_SECRET")
-   :provider :soundcloud
-   })
+   :provider :soundcloud})
 
 (defn start-server
   "Starts our test web server."
