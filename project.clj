@@ -5,7 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [ring "1.4.0"]
-                 [loudmoauth "0.1.0-SNAPSHOT-LOCAL"]]
+                 [loudmoauth "0.1.1"]]
   :main ^:skip-aot loudmoauth-examples.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
