@@ -34,6 +34,17 @@
    :client-secret (System/getenv "SOUNDCLOUD_OAUTH2_CLIENT_SECRET")
    :provider :soundcloud})
 
+(def linkedin-oauth2-params 
+  {:base-url "https://www.linkedin.com/oauth/v2"
+   :auth-endpoint "/authorization"
+   :token-endpoint "/accessToken"
+   :client-id (System/getenv "LINKEDIN_OAUTH2_CLIENT_ID")
+   :redirect-uri "http://localhost:3000/oauth2"
+   :scope "r_basicprofile"
+   :client-secret (System/getenv "LINKEDIN_OAUTH2_CLIENT_SECRET")
+   :provider :linkedin})
+
+
 (defn start-server
   "Starts our test web server."
   []
