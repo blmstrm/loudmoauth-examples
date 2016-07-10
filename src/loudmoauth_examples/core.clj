@@ -44,6 +44,16 @@
    :client-secret (System/getenv "LINKEDIN_OAUTH2_CLIENT_SECRET")
    :provider :linkedin})
 
+(def instagram-oauth2-params 
+  {:base-url "https://api.instagram.com/oauth"
+   :auth-endpoint "/authorize"
+   :token-endpoint "/access_token"
+   :client-id (System/getenv "INSTAGRAM_OAUTH2_CLIENT_ID")
+   :redirect-uri "http://localhost:3000/oauth2"
+   :scope "basic"
+   :client-secret (System/getenv "INSTAGRAM_OAUTH2_CLIENT_SECRET")
+   :provider :instagram})
+
 
 (defn start-server
   "Starts our test web server."
